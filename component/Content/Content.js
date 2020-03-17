@@ -1,9 +1,8 @@
 import React from 'react';
 import { Section, Container, Planet, PlanetInformation, Residents } from '../style/Content.style'
 import PlanetImage from '../../image/planet.svg'
-import image1 from '../../image/image1.svg'
 
-const Content = () => {
+const Content = (props) => {
     return (
         <Section>
             <Container>
@@ -11,12 +10,15 @@ const Content = () => {
                     <img src={PlanetImage} id="planetImage" />
                 </Planet>
                 <PlanetInformation>
-                    <h3>Earth (C-137)</h3>
-                    <p>Planet</p>
+                    <h3>{props.item.name}</h3>
+                    <p>{props.item.type}</p>
                     <Residents>
-                        <img src={image1} id="residents" />
-                        <img src={image1} id="residents" />
-                        <img src={image1} id="residents" />
+                        {props.item.residents
+                            .filter((item, idx) => idx < 3)
+                            .map((item) => (
+                                < img key={item.id} src={item.image} id="residents" />
+                            ))
+                        }
                     </Residents>
                 </PlanetInformation>
             </Container>
