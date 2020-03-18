@@ -2,7 +2,7 @@ import React from 'react';
 import { Section, Container, Planet, PlanetInformation, Residents } from '../style/Content.style'
 import PlanetImage from '../../image/planet.svg'
 
-const Content = (props) => {
+const Content = (props) => { 
     return (
         <Section>
             <Container>

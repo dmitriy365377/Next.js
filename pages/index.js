@@ -1,9 +1,9 @@
-import React from 'react'; 
+import React from 'react';
 
 // import { Route, Switch, BrowserRouter } from 'react-router-dom'
 import { ApolloProvider } from 'react-apollo'
 import { ApolloClient } from 'apollo-client';
-import { InMemoryCache } from  'apollo-cache-inmemory';
+import { InMemoryCache } from 'apollo-cache-inmemory';
 import { HttpLink } from 'apollo-link-http';
 import 'cross-fetch/polyfill';
 
@@ -18,15 +18,15 @@ const link = new HttpLink({
 const client = new ApolloClient({
   cache,
   link
-})  
+})
 
 function App() {
-    return (
-        <ApolloProvider client={client}>
-            <Global />
-            <Page />
-        </ApolloProvider>
-    )
+  return (
+    <ApolloProvider client={client}>
+      <Global />
+      <Page />
+    </ApolloProvider>
+  )
 }
 
 export default App
