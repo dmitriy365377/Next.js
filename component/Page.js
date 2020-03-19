@@ -1,15 +1,14 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useQuery } from "@apollo/react-hooks";
 import { Waypoint } from 'react-waypoint';
 
 import { Container, LoadingDiv } from './style/StyledPage.style'
 import LoadingGif from '../image/loading2.gif'
-//import Gif from '../image/loading.gif'
+import Gif from '../image/loading.gif'
 
 import Header from './Header/Header'
 import Content from './Content/Content'
 
-//import { Query } from 'react-apollo'
 import gql from 'graphql-tag'
 
 
@@ -37,9 +36,9 @@ const GET_LAUNCHES = gql`
 `;
 
 const Page = () => {
-  const { data, loading, error, fetchMore } = useQuery(GET_LAUNCHES); 
-
-  if (loading) {
+  const { data, loading, error, fetchMore, networkStatus } = useQuery(GET_LAUNCHES, { notifyOnNetworkStatusChange: true });
+ 
+  if (!data || !data.locations) {
     return (
       <div>
         <img src={LoadingGif} id="pageLoading" />
@@ -54,51 +53,83 @@ const Page = () => {
         </style>
       </div>
     )
-  }
-
+  } 
 
   if (error) return <p>Error :(</p>;
 
+  console.log(networkStatus)
+ 
   return (
     <Container>
       <Header />
-
       {
         data.locations.results.map((item, i) => {
           return (
             <React.Fragment key={item.id}>
               <Content item={item} />
-              {i === data.locations.results.length - 11 && (
-                <Waypoint onEnter={() => fetchMore({
-                  variables: {
-                    page: data.locations.info.next,
-                  },
-                  updateQuery: (prev, { fetchMoreResult, ...rest }) => {
-                    if (!fetchMoreResult) return prev;
-
-                    return {
-                      locations: {
-                        __typename: "Location",
-                        results: [
-                          ...prev.locations.results,
-                          ...fetchMoreResult.locations.results,
-                        ],
-                      },
-                    };
-                  },
-                })}
-                />
+              {i === data.locations.results.length - 1 && (
+                <>
+                  <Waypoint onEnter={() => fetchMore({
+                    variables: {
+                      page: data.locations.info.next,
+                    },
+                    updateQuery: (prev, { fetchMoreResult, ...rest }) => {
+                      if (!fetchMoreResult) return prev;
+                      return {
+                        locations: {
+                          __typename: "Location",
+                          results: [
+                            ...prev.locations.results,
+                            ...fetchMoreResult.locations.results,
+                          ],
+                        },
+                      };
+                    },
+                  })}
+                  />
+                </>
               )}
             </React.Fragment>
           )
         })
-      } 
+      }
+
+      {networkStatus === 3 && loading && <>
+        <img src={Gif} id="pageLoading" />
+        <style jsx>{`
+             #pageLoading {
+              margin: 20px auto;
+              width: 70%;
+              } 
+            `}
+        </style>
+      </>}
+
     </Container>
   );
 }
  
 
+
 export default Page
+
+
+ // if (loading) {
+  //   return (
+  //     <div>
+  //       <img src={LoadingGif} id="pageLoading" />
+  //       <style jsx>{`
+  //                div {
+  //                   height: 100vh;
+  //                   display: flex;
+  //                   align-items: center;
+  //                   justify-content: center;
+  //               } 
+  //           `}
+  //       </style>
+  //     </div>
+  //   )
+  // }
 
 // const Page = () => (
 //   <Query

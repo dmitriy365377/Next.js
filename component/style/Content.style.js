@@ -12,7 +12,7 @@ export const Container = styled.div`
     width: 70%;
     min-height: 100px;
     background: #fff;
-    box-shadow: 2px 2px 10px rgba(29, 99, 234, 0.48);
+    box-shadow: 5px 3px 14px rgba(29, 99, 234, 0.48);
     justify-self: center;
     display: flex;
     background: #312A2A;
