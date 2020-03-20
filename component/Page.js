@@ -1,13 +1,13 @@
-import React from 'react'
+import React from 'react';
 import { useQuery } from "@apollo/react-hooks";
 import { Waypoint } from 'react-waypoint';
 
 
-import { Container } from './style/StyledPage.style'
-import InitialLoader from '../component/Loader/InitialLoader'
-import DataUploadLoader from '../component/Loader/DataUploadLoader'
+import { Container } from './style/StyledPage.style';
+import InitialLoader from '../component/Loader/InitialLoader';
+import DataUploadLoader from '../component/Loader/DataUploadLoader';
 
-// import Header from './Header/Header'
+ 
 import Content from './Content/Content';
 
 import gql from 'graphql-tag';
@@ -50,8 +50,7 @@ const Page = () => {
 
 
   return (
-    <Container>
-      {/* <Header /> */}
+    <Container> 
       {
         data.locations.results.map((item, i) => {
           return (
