@@ -1,5 +1,4 @@
 import React from 'react';
-import LocationDetail from '../component/LocationDetail/LocationDetail'; 
 
 import { ApolloProvider } from 'react-apollo';
 import { ApolloClient } from 'apollo-client';
@@ -9,6 +8,8 @@ import 'cross-fetch/polyfill';
 
 import Global from './styles/global.style'
 import Page from '../component/Page'
+import MainLayout from '../component/layouts/MainLayouts'
+import Location from './Location' 
 
 const cache = new InMemoryCache();
 const link = new HttpLink({
@@ -23,10 +24,16 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}> 
-        <Global />
-        <Page /> 
+      <Global />
+      <MainLayout> 
+        <Page />
+        <Location/>
+      </MainLayout> 
     </ApolloProvider>
   )
 }
 
 export default App
+
+{/* <Global />
+        <Page />  */}

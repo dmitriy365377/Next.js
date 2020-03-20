@@ -1,9 +1,11 @@
 import React from 'react'
-
+import Link from 'next/link'
 
 const LocationDetail = () => {
     return (
-        <div>Planet</div>
+        <Link href="/profile"  >
+            <div>Planet</div>
+        </Link>
     )
 }
 

@@ -1,13 +1,23 @@
 import React from 'react';
 import { Section, Container, Planet, PlanetInformation, Residents } from '../style/Content.style'
 import PlanetImage from '../../image/planet.svg'
+import Link from 'next/link';
 
-const Content = (props) => { 
+const Content = (props) => {
     return (
         <Section>
             <Container>
                 <Planet>
-                    <img src={PlanetImage} id="planetImage" />
+                    <Link href={{
+                        pathname: '/location',
+                        query: {
+                            name: props.item.name
+                        }
+                    }}>
+                        <a>
+                            <img src={PlanetImage} id="planetImage" />
+                        </a>
+                    </Link>
                 </Planet>
                 <PlanetInformation>
                     <h3>{props.item.name}</h3>
@@ -21,6 +31,7 @@ const Content = (props) => {
                         }
                     </Residents>
                 </PlanetInformation>
+
             </Container>
             <style jsx>{`
                 #planetImage {
