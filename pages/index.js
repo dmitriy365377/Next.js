@@ -1,7 +1,7 @@
 import React from 'react';
+import LocationDetail from '../component/LocationDetail/LocationDetail'; 
 
-// import { Route, Switch, BrowserRouter } from 'react-router-dom'
-import { ApolloProvider } from 'react-apollo'
+import { ApolloProvider } from 'react-apollo';
 import { ApolloClient } from 'apollo-client';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { HttpLink } from 'apollo-link-http';
@@ -22,9 +22,9 @@ const client = new ApolloClient({
 
 function App() {
   return (
-    <ApolloProvider client={client}>
-      <Global />
-      <Page />
+    <ApolloProvider client={client}> 
+        <Global />
+        <Page /> 
     </ApolloProvider>
   )
 }
