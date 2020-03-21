@@ -15,6 +15,10 @@ export const Container = styled.div`
     justify-self: center;
     display: flex;
     background: #312A2A;
+
+    @media(max-width: 768px) {
+        width: 95%;   
+    }
 `
  
 
@@ -33,10 +37,17 @@ export const Residents = styled.div`
     font-weight: bold;
     font-size: 24px;
     line-height: 28px;  
+
+    @media(max-width: 768px) {
+        margin-top:80px;
+        margin-bottom:30px;
+        font-size:60px;   
+    }
 `
 export const ResidentImg = styled.div`
     display: inline-flex;
     width:30%;
+ 
 `
   
 export const PlanetImg = styled.div`
@@ -47,4 +58,10 @@ export const PlanetImg = styled.div`
 export const PlanetInfo = styled.div`
     color: #fff;
     padding-left:20%;
+
+    @media(max-width: 768px) { 
+        font-size:50px;
+        padding-top:5%;
+        padding-left:5%; 
+    }
 `

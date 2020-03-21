@@ -15,8 +15,8 @@ html{
  :root {
      font-size: 24px;
 
-     @media (min-width: 768px) {
-        font-size: 18px;
+     @media (max-width: 768px) {
+        font-size: 40px;
       }
 
       @media (min-width: 1024px) {

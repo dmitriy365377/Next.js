@@ -10,6 +10,7 @@ export default gql`
         gender 
         image
         location {
+            id
             name
             type
             dimension 

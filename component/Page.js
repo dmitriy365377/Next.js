@@ -7,7 +7,7 @@ import { Container } from './style/StyledPage.style';
 import InitialLoader from '../component/Loader/InitialLoader';
 import DataUploadLoader from '../component/Loader/DataUploadLoader';
 
- 
+
 import Content from './Content/Content';
 
 import gql from 'graphql-tag';
@@ -37,28 +37,28 @@ const GET_LAUNCHES = gql`
 `;
 
 const Page = () => {
-  const { data, loading, error, fetchMore, networkStatus } = useQuery(GET_LAUNCHES, { notifyOnNetworkStatusChange: true });
+  const { data, loading, error, fetchMore, networkStatus } = useQuery(GET_LAUNCHES, { notifyOnNetworkStatusChange: true }
+  );
 
-  console.log(data)
+
+  if (error) return <p>Error :(</p>;
+
   if (!data || !data.locations) {
     return (
       <InitialLoader />
     )
-  }
-
-  if (error) return <p>Error :(</p>;
-
+  };
 
   return (
-    <Container> 
+    <Container>
       {
         data.locations.results.map((item, i) => {
           return (
-            <React.Fragment key={item.id}> 
+            <React.Fragment key={item.id}>
               <Content item={item} />
               {i === data.locations.results.length - 1 && (
                 <>
-                  <Waypoint onEnter={() => fetchMore({  
+                  <Waypoint onEnter={() => fetchMore({
                     variables: {
                       page: data.locations.info.next,
                     },

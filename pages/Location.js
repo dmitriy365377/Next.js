@@ -20,14 +20,14 @@ const LocationPage = (props) => {
 
     );
 
+    if (error) return <p>Error :(</p>;
+
     if (!data || !data.locations) {
         return (
             <InitialLoader />
         )
-    }
-
-    if (error) return <p>Error :(</p>;
-
+    };
+ 
     return (
         <>
             <MainLayout>
@@ -55,6 +55,17 @@ const LocationPage = (props) => {
                     #planetImage{
                         margin: 0 auto
                     }
+
+                    @media(max-width: 768px) {
+                        #planetImage{
+                            width:100%;
+                        }
+                        
+                        #vectorImage{
+                            position: absolute;
+                            left: 40px;
+                       }
+                    }  
                     `}
             </style>
         </>
@@ -98,14 +109,31 @@ function LocationContent({ data }) {
                     } 
 
                     #residents{
-                    margin: 0 2%;
-                    width:20%
+                        margin: 0 2%;
+                        width:20%
                     }
 
+                    
                     p {
-                    margin: 5% 0;
-                    color: #DCDCDC;
-                    font-size: 18px;
+                        margin: 5% 0;
+                        color: #DCDCDC;
+                        font-size: 18px;
+                    }
+
+                    @media(max-width:768px) {
+                        #residents{ 
+                            width:28%
+                        }
+                        
+                        #residentImage {
+                            width: 100%
+                        }  
+                    }
+ 
+                    @media(max-width:768px) {
+                        p { 
+                            font-size: 40px;
+                        }    
                     }
             `}
             </style>

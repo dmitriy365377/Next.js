@@ -4,7 +4,7 @@ import PlanetImage from '../../image/planet.svg'
 import Link from 'next/link';
 
 const Content = (props) => {
-    
+
     return (
         <Section>
             <Container>
@@ -44,10 +44,22 @@ const Content = (props) => {
                     width:20%
                 }
 
+                @media(max-width:768px) {
+                    #residents{ 
+                        width:28%
+                    }    
+                }
+
                 p {
                     margin: 5% 0;
                     color: #DCDCDC;
                     font-size: 18px;
+                }
+
+                @media(max-width:768px) {
+                    p { 
+                        font-size: 40px;
+                    }    
                 }
             `}
             </style>

@@ -16,11 +16,19 @@ export const Container = styled.div`
     justify-self: center;
     display: flex;
     background: #312A2A;
+    
+    @media(max-width: 768px) {
+         width: 95%;   
+    }    
 `
 
 export const Planet = styled.div`
     display: inline-flex;
     width:30%;
+
+    @media(max-width: 768px) {
+        width: 40%;   
+   }  
 `
 
 export const PlanetInformation = styled.div`
