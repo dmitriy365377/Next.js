@@ -9,8 +9,14 @@ export default gql`
                 name
                 type
              residents{
-                 image
+                 name
                  id
+                 location{
+                 name
+                 id
+                 type
+                }
+                 image 
              }
          }
          info{

@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 
-
 export const Section = styled.div`
     display:flex;
     flex-direction: column;
@@ -9,27 +8,40 @@ export const Section = styled.div`
 
 export const Container = styled.div`
     margin: 20px auto;
-    width: 80%;
+    width: 70%;
     min-height: 100px;
-    background: #fff;
+    background: #073955;
     box-shadow: 5px 3px 14px rgba(29, 99, 234, 0.48);
     justify-self: center;
     display: flex;
     background: #312A2A;
 `
-
-export const Planet = styled.div`
-    display: inline-flex;
-    width:30%;
-`
+ 
 
 export const PlanetInformation = styled.div`
-    width:70%;
+    width:60%;
     margin: 0 2.23%;
     margin-top: 16px;
     color: white;
 `
 
 export const Residents = styled.div`
-    display:flex;
+    text-align:center;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 28px;  
+`
+export const ResidentImg = styled.div`
+    display: inline-flex;
+    width:30%;
+`
+  
+export const PlanetImg = styled.div`
+    display: block;
+    margin: 0 auto; 
+`
+
+export const PlanetInfo = styled.div`
+    padding-left:20%;
 `
