@@ -3,7 +3,7 @@ import { createGlobalStyle } from 'styled-components';
 
 export const Global = createGlobalStyle` 
 html{
-  background-image:url('/galaxy.svg') ;
+  background-image:url('/galaxy.jpg') ;
 }
   
  * {   
@@ -13,7 +13,7 @@ html{
      font-family: Arial, Helvetica, sans-serif;
  }
  :root {
-     fon-size: 24px;
+     font-size: 24px;
 
      @media (min-width: 768px) {
         font-size: 18px;
