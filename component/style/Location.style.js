@@ -26,6 +26,8 @@ export const PlanetInformation = styled.div`
 `
 
 export const Residents = styled.div`
+    padding-top: 40px;
+    color: white;
     text-align:center;
     font-style: normal;
     font-weight: bold;
@@ -38,10 +40,11 @@ export const ResidentImg = styled.div`
 `
   
 export const PlanetImg = styled.div`
-    display: block;
-    margin: 0 auto; 
+    display: flex;
+    flex-flow: row wrap; 
 `
 
 export const PlanetInfo = styled.div`
+    color: #fff;
     padding-left:20%;
 `

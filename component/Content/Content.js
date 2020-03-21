@@ -4,6 +4,7 @@ import PlanetImage from '../../image/planet.svg'
 import Link from 'next/link';
 
 const Content = (props) => {
+    
     return (
         <Section>
             <Container>

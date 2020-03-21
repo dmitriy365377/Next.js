@@ -1,30 +1,40 @@
 import React from 'react';
 import { useQuery } from "@apollo/react-hooks";
 import MainLayout from '../component/layouts/MainLayouts';
-import fetchLocation from '../queries/FetchLocation'
-import { withApollo } from '../lib/apollo'
-import { useRouter } from 'next/router'
-
+import fetchLocation from '../queries/FetchLocation';
+import { withApollo } from '../lib/apollo';
+import { useRouter } from 'next/router'; 
 
 import { Section, Container, PlanetImg, PlanetInfo, Residents, ResidentImg, PlanetInformation } from '../component/style/Location.style';
 
-import PlanetImage from '../image/planet.svg'
-import InitialLoader from '../component/Loader/InitialLoader'
+import PlanetImage from '../image/planet.svg';
+import VectorImage from '../image/back.png'
+import InitialLoader from '../component/Loader/InitialLoader';
 
 const LocationPage = (props) => {
     const router = useRouter();
-    const { data } = useQuery(fetchLocation, { variables: { name: router.query.name } });
-     
+
+    const { data, error } = useQuery(
+        fetchLocation,
+        { variables: { name: router.query.name } }
+
+    ); 
+
     if (!data || !data.locations) {
         return (
-          <InitialLoader />
+            <InitialLoader />
         )
-      }
+    }
+
+    if (error) return <p>Error :(</p>;
 
     return (
         <>
             <MainLayout>
                 <PlanetImg>
+                    <span onClick={() => router.push('/index')}>
+                        <img src={VectorImage} id="vectorImage" />
+                    </span>
                     <img src={PlanetImage} id="planetImage" />
                 </PlanetImg>
                 <PlanetInfo>
@@ -34,47 +44,75 @@ const LocationPage = (props) => {
                 <Residents>
                     Residents
                 </Residents>
-                {
-                    data.locations.results[0].residents.map((item, i) => {
-                        return (
-                            <Section key={item.id}>
-                                <Container>
-                                    <ResidentImg>
-                                        <img src={item.image} id="residentImage" />
-                                    </ResidentImg>
-                                    <PlanetInformation>
-                                     <h2>{item.name}</h2>
-                                     <p>{item.location.name}</p>
-                                     <p>{item.location.type}</p>
-                                    </PlanetInformation>
-                                </Container>
-                            </Section>
-                        )
-                    })
-                }
+                <LocationContent data={data} />
             </MainLayout>
             <style jsx>{` 
+
+                    #vectorImage{
+                         width:100px
+                    }
+
+                    #planetImage{
+                        margin: 0 auto
+                    }
+                    `}
+            </style>
+        </>
+    )
+}
+
+function LocationContent({ data }) {
+    const router = useRouter();
+ 
+    return (
+        <>
+            {
+                data.locations.results[0].residents.map((item, i) => {
+                    console.log('item', item)
+                    return (
+                        <Section key={item.id}>
+                            <Container>
+                                <ResidentImg>
+                                    <span onClick={() => router.push({
+                                        pathname: '/character',
+                                        query: {
+                                            id: item.id
+                                        },
+                                    })}>
+                                        <img src={item.image} id="residentImage" />
+                                    </span>
+                                </ResidentImg>
+                                <PlanetInformation>
+                                    <h2>{item.name}</h2>
+                                    <p>{item.location.name}</p>
+                                    <p>{item.location.type}</p>
+                                </PlanetInformation>
+                            </Container>
+                        </Section>
+                    )
+                })
+            }
+            <style jsx>{` 
+ 
                     #residentImage {
                         width: 80%
-                    }
-            
+                    } 
 
-                #residents{
+                    #residents{
                     margin: 0 2%;
                     width:20%
-                }
+                    }
 
-                p {
+                    p {
                     margin: 5% 0;
                     color: #DCDCDC;
                     font-size: 18px;
-                }
+                    }
             `}
-              </style>
+            </style>
         </>
     )
 }
 
 export default withApollo({ ssr: true })(LocationPage);
 
- 
