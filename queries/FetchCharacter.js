@@ -2,18 +2,19 @@ import gql from 'graphql-tag';
 
 
 export default gql`
-    query CharacterQuery($id:Int) {
+    query CharacterQuery($id:ID) {
         character(id:$id){
 		id
         name
-        type
-		gender 
-		status
+	    status
+        gender 
         image
         location {
-            id
             name
-        }    
+            type
+            dimension 
+             
+        }   
     }     
 }    
 `   

@@ -3,7 +3,7 @@ import { useQuery } from "@apollo/react-hooks";
 import MainLayout from '../component/layouts/MainLayouts';
 import fetchLocation from '../queries/FetchLocation';
 import { withApollo } from '../lib/apollo';
-import { useRouter } from 'next/router'; 
+import { useRouter } from 'next/router';
 
 import { Section, Container, PlanetImg, PlanetInfo, Residents, ResidentImg, PlanetInformation } from '../component/style/Location.style';
 
@@ -18,7 +18,7 @@ const LocationPage = (props) => {
         fetchLocation,
         { variables: { name: router.query.name } }
 
-    ); 
+    );
 
     if (!data || !data.locations) {
         return (
@@ -32,7 +32,7 @@ const LocationPage = (props) => {
         <>
             <MainLayout>
                 <PlanetImg>
-                    <span onClick={() => router.push('/index')}>
+                    <span onClick={() => router.back()}>
                         <img src={VectorImage} id="vectorImage" />
                     </span>
                     <img src={PlanetImage} id="planetImage" />
@@ -63,12 +63,11 @@ const LocationPage = (props) => {
 
 function LocationContent({ data }) {
     const router = useRouter();
- 
+
     return (
         <>
             {
                 data.locations.results[0].residents.map((item, i) => {
-                    console.log('item', item)
                     return (
                         <Section key={item.id}>
                             <Container>
