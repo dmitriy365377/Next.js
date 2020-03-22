@@ -10,7 +10,7 @@
 ## О проекте
 
 1. В папке pages находятся страницы для router
-2. В папке globalStyle находятся global style
+2. В папке globalStyle находится global style
 3. В папке Loader находятся лоудеры для проекта
 4. В папке layouts находится файл для отображения страницы при Router - Header статичен меняется только <main></main>
 5. В папке public находится статичная картинка для background
