@@ -1,30 +1,19 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/zeit/next.js/tree/canary/packages/create-next-app).
+ 
+## Чтобы запустить проект
 
-## Getting Started
+1. cd ricky
+2. npm install
+3. npm run dev
+ 
+И в браузере откройте - (http://localhost:3000) 
+ 
+## О проекте
 
-First, run the development server:
+1. В папке pages находится страницы для router
+2. В папке globalStyle находятся global style
+3. В папке Loader находятся лоудеры для проекта
+4. В папке layouts находится файл для отображения страницы при Router - Header статичен меняется только <main></main>
+5. В папке public находится статичная картинка для background
+6. В папке queries написаны query для запросов
 
-```bash
-npm run dev
-# or
-yarn dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/zeit/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on ZEIT Now
-
-The easiest way to deploy your Next.js app is to use the [ZEIT Now Platform](https://zeit.co/import?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+  
